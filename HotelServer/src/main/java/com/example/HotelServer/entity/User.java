@@ -59,4 +59,16 @@ public abstract class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public void setEmail(String mail) {
+    }
+
+    public void setName(String admin) {
+    }
+
+    public void setUserRole(UserRole userRole) {
+    }
+
+    public void setPassword(String password) {
+    }
 }

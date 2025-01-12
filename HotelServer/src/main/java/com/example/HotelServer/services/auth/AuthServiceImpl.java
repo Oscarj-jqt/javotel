@@ -7,6 +7,7 @@ import com.example.HotelServer.entity.User;
 import com.example.HotelServer.enums.UserRole;
 import com.example.HotelServer.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.EntityFilterException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,7 +19,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 
 //It manages authentication and users
-public class AuthServiceImpl {
+public class AuthServiceImpl implements AuthService {
+
+    public interface AuthService {
+        UserDto createUser(SignupRequest signupRequest) throws EntityExistsException;
+    }
 
     // Dependency injection of UserRepository to interact with the database
     private final UserRepository userRepository;

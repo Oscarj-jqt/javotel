@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Data
-public abstract class User implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,11 @@ public abstract class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(userRole.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     @Override
@@ -60,15 +65,19 @@ public abstract class User implements UserDetails {
         return true;
     }
 
-    public void setEmail(String mail) {
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setName(String admin) {
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public void setPassword(String password) {
+        this.password = password;
     }
 }

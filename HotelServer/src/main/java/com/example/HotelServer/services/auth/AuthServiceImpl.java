@@ -1,11 +1,14 @@
 package com.example.HotelServer.services.auth;
 
 
+import com.example.HotelServer.dto.SignupRequest;
+import com.example.HotelServer.dto.UserDto;
 import com.example.HotelServer.entity.User;
 import com.example.HotelServer.enums.UserRole;
 import com.example.HotelServer.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.EntityFilterException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -50,4 +53,23 @@ public class AuthServiceImpl {
         }
 
     }
+
+
+    public UserDto createUser(SignupRequest signupRequest) throws EntityFilterException {
+        // Check if this email exists
+        if(userRepository.findFirstByEmail(signupRequest.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("User Already Present With email " + signupRequest.getEmail());
+        }
+
+        // Create a new object with data from SignupRequest
+        User user = new User();
+        user.setEmail(signupRequest.getEmail());
+        user.setName(signupRequest.getName());
+        user.setUserRole(UserRole.CUSTOMER);
+        user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
+        User createdUser = userRepository.save(user);
+        return createdUser.getUserDto();
+    }
+
+
 }

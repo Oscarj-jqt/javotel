@@ -1,1 +1,33 @@
-<p>register works!</p>
+<div class="center-form">
+    <img src="../../../../assets/logo.webp" alt="Logo" class="logo" />
+    <h2>Entrez les détails de l'inscription</h2>
+    <form nz-form [formGroup]="registerForm" class="custom-form">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Entrez votre nom !">
+                <nz-input-group nzPrefixIcon="idcard">
+                    <input type="text" nz-input formControlName="name" placeholder="Nom" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Entrez votre email !">
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="email" placeholder="Email" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Entrez votre password !">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input type="text" nz-input formControlName="password" placeholder="Password" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button nzType="primary" nzBlock [disabled]="registerForm.invalid" class="w-100">
+            S'inscrire
+        </button>
+    </form>
+</div>

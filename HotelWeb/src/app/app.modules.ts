@@ -8,8 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { en_US, fr_FR, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './auth/components/register/register.component';
 import { DemoNgZorroAntdModule } from './DemoNgZorroAntdModule';
 import { AppRoutingModule } from './app.routing.modules';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -18,7 +20,7 @@ registerLocaleData(en);
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent, RegisterComponent
     ],
     imports: [
         BrowserModule,
@@ -27,7 +29,8 @@ registerLocaleData(en);
         HttpClientModule,
         BrowserAnimationsModule,
         DemoNgZorroAntdModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        AuthModule
     ],
     providers: [
         { provide: NZ_I18N, useValue: en_US}

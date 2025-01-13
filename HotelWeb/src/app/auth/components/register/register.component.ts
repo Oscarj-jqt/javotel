@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
-  imports: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })

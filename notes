@@ -1,4 +1,9 @@
+Client Angular (Front-end)  ---> Serveur Spring Java (Back-end) ---> Contrôleur (API HTTP)  --->  Service (Logique métier)  --->  Repository (Base de données)
+
+
 Création de l'entité User & connexion Spring boot avec la base de donnée MySQL
 Adding Spring Security & Create Token Method in Spring Boot (in pom.xml file)
 Creating Util for Parsing & Validating JWT
 Automating Admin Account Creation in Service
+Creating a signup Customer API with user DTO
+Creating Web Security Config & Cors Filter

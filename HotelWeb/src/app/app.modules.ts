@@ -9,6 +9,8 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DemoNgZorroAntdModule } from "./DemoNgZorroAntdModule";
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 
 
@@ -25,6 +27,8 @@ registerLocaleData(fr);
         HttpClientModule,
         BrowserAnimationsModule,
         DemoNgZorroAntdModule,
+        NzLayoutModule,   
+        NzMenuModule,  
         ReactiveFormsModule
     ],
     providers: [

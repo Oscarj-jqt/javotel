@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { DemoNgZorroAntdModule } from './DemoNgZorroAntdModule';
-import { AppRoutingModule } from './app.routing.modules';
+import { AppRoutingModule } from './app.routing.module';
 import { AuthModule } from './auth/auth.module';
 
 

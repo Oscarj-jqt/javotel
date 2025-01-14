@@ -28,4 +28,8 @@ public class SignupRequest {
     public CharSequence getPassword() {
         return password;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

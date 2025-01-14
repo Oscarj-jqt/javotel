@@ -91,4 +91,16 @@ public class User implements UserDetails {
 
         return dto;
     }
+
+    public Object getUserRole() {
+        return userRole;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

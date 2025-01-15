@@ -1,5 +1,6 @@
 package com.example.HotelServer.configs;
 
+import com.example.HotelServer.enums.UserRole;
 import com.example.HotelServer.services.jwt.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
 // Enables Spring Security in the application
@@ -24,8 +28,11 @@ public class WebSecurityConfiguration {
 
     private final UserService userService;
 
-    public WebSecurityConfiguration(UserService userService) {
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    public WebSecurityConfiguration(UserService userService, JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.userService = userService;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
     // Declares this method as a Bean, allowing Spring to manage it
@@ -34,7 +41,13 @@ public class WebSecurityConfiguration {
         // Disables CSRF protection (useful for APIs, especially during development)
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(request->
                 // Allows anyone to access endpoints under '/api/auth/**' without authentication
-                request.requestMatchers("/api/auth/**").permitAll());
+                request.requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/admin/**").hasAnyAuthority(UserRole.ADMIN.name())
+                        .requestMatchers("/api/customer/**").hasAnyAuthority(UserRole.CUSTOMER.name())
+                        .anyRequest().authenticated())
+                .sessionManagement(manager-> manager.sessionCreationPolicy(STATELESS))
+                .authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

@@ -1,18 +1,11 @@
-package com.example.HotelServer.entity;
+package com.example.HotelServer.dto;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Data;
 
-@Entity
 @Data
-public class Room {
+public class RoomDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -23,20 +16,20 @@ public class Room {
 
     private boolean available;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setPrice(Long price) {
-        this.price = price;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getPrice() {
         return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
     public String getType() {
@@ -54,4 +47,5 @@ public class Room {
     public boolean isAvailable() {
         return available;
     }
+
 }

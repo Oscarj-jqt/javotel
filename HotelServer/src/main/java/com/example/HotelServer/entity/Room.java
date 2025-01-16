@@ -1,6 +1,7 @@
 package com.example.HotelServer.entity;
 
 
+import com.example.HotelServer.dto.RoomDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,26 @@ public class Room {
     private Long price;
 
     private boolean available;
+
+    public RoomDto getRoomDto(){
+        RoomDto roomDto = new RoomDto();
+
+        roomDto.setId(id);
+        roomDto.setName(name);
+        roomDto.setType(type);
+        roomDto.setAvailable(available);
+        roomDto.setPrice(price);
+
+        return roomDto;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -54,4 +75,6 @@ public class Room {
     public boolean isAvailable() {
         return available;
     }
+
+
 }

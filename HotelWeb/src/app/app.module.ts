@@ -6,7 +6,6 @@ import en from '@angular/common/locales/en';
 import fr from '@angular/common/locales/fr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { en_US, fr_FR, NZ_I18N } from 'ng-zorro-antd/i18n';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { DemoNgZorroAntdModule } from './DemoNgZorroAntdModule';
@@ -25,11 +24,10 @@ registerLocaleData(en);
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule, 
-        HttpClientModule,
-        BrowserAnimationsModule,
         DemoNgZorroAntdModule,
         ReactiveFormsModule,
+        FormsModule, 
+        BrowserAnimationsModule,
         AuthModule
     ],
     providers: [

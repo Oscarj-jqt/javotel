@@ -11,6 +11,7 @@ export class DashboardComponent {
 
   currentPage = 1;
   rooms = [];
+    total:any;
   constructor(private adminService: AdminService,
     private message: NzMessageService,
   ){
@@ -21,6 +22,7 @@ export class DashboardComponent {
     this.adminService.getRooms(this.currentPage -1).subscribe(res=>{
       console.log(res);
       this.rooms = res;
+      this.total = res.totalPages * 1;
     })
   }
 }

@@ -7,8 +7,8 @@ import { LoginComponent } from './auth/components/login/login.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: '', component: LoginComponent },
-  { path: 'customer', loadChildren: () => import('./modules/customers/customer.module').then(m => m.CustomersModule) },
+  { path: 'login', component: LoginComponent },
+  { path: 'customer', loadChildren: () => import('./modules/customer/customer.module').then(m => m.CustomersModule) },
   { path: 'customer', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   
 ];

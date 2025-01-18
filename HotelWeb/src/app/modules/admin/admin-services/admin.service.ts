@@ -23,6 +23,12 @@ export class AdminService {
       headers: this.createAuthorizationHeader(),
     })
   }
+
+  getRoomById(id:number): Observable<any>{
+    return this.http.get(BASIC_URL + `api/admin/room/${id}`,{
+      headers: this.createAuthorizationHeader(),
+    });
+  }
   
 
   createAuthorizationHeader(){

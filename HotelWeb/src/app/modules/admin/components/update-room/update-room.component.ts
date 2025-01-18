@@ -11,23 +11,39 @@ import { AdminService } from '../../admin-services/admin.service';
 })
 export class UpdateRoomComponent {
 
-  upateRoomForm: FormGroup;
+  updateRoomForm: FormGroup;
+  id!: number;
   
+
     constructor(private fb: FormBuilder,
       private message: NzMessageService,
       private router: Router,
       private adminService: AdminService,
-      private activatedroute: ActivatedRoute,
-      id = this.activatedroute.snapshot.params['id'],
+      private activatedroute: ActivatedRoute
     ){
-      this.upateRoomForm = this.fb.group({
+      this.updateRoomForm = this.fb.group({
         name: ['', Validators.required],
         type: ['', Validators.required],
         price: ['', Validators.required]
-      })
+      });
+
+      this.id = this.activatedroute.snapshot.params['id'];
+      this.getRoomById();
+
     }
 
     submitForm(){
       
     }
+
+    getRoomById(){
+      this.adminService.getRoomById(this.id).subscribe(res=>{
+        this.updateRoomForm.patchValue(res);
+      }, error=>{
+        this.message.error(`${error.error}`,{ nzDuration: 5000 })
+      })
+    }
+  // id(id: any) {
+  //   throw new Error('Method not implemented.');
+  // }
 }

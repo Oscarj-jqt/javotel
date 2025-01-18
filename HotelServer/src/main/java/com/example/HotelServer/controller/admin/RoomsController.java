@@ -46,4 +46,14 @@ public class RoomsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
         }
     }
+
+    @PutMapping("/room/{id}")
+    public ResponseEntity<?> updateRoom(@PathVariable Long id, @RequestBody RoomDto roomDto){
+        boolean success = roomsService.updateRoom(id, roomDto);
+        if(success){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }

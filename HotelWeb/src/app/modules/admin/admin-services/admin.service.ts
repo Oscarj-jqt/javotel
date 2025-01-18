@@ -29,6 +29,12 @@ export class AdminService {
       headers: this.createAuthorizationHeader(),
     });
   }
+
+  updateRoomDetails(id:number, roomDto:any): Observable<any>{
+    return this.http.post(BASIC_URL + `api/admin/room/${id}`, roomDto,{
+      headers: this.createAuthorizationHeader(),
+    })
+  }
   
 
   createAuthorizationHeader(){

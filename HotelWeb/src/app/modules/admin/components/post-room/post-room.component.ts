@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { AdminService } from '../../admin-services/admin.service';
+import { AdminService } from '../../admin-services/admin-services/admin.service';
 
 @Component({
   selector: 'app-post-room',

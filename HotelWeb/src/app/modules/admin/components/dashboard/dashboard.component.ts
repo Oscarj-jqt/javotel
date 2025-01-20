@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdminService } from '../../admin-services/admin.service';
+import { AdminService } from '../../admin-services/admin-services/admin.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 

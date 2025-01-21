@@ -1,6 +1,7 @@
 package com.example.HotelServer.entity;
 
 
+import com.example.HotelServer.dto.ReservationDto;
 import com.example.HotelServer.enums.ReservationStatus;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -93,4 +94,23 @@ public class Reservation {
         this.user = user;
     }
 
+
+    public ReservationDto getReservationDto(){
+        ReservationDto reservationDto = new ReservationDto();
+
+        reservationDto.setId(id);
+        reservationDto.setPrice(price);
+        reservationDto.setCheckInDate(checkInDate);
+        reservationDto.setCheckOutDate(checkOutDate);
+        reservationDto.setReservationStatus(reservationStatus);
+
+        reservationDto.setUserId(user.getId());
+        reservationDto.setName(user.getUsername());
+
+        reservationDto.setRoomId(room.getId());
+        reservationDto.setRoomName(room.getName());
+        reservationDto.setRoomType(room.getType());
+
+        return reservationDto;
+    }
 }

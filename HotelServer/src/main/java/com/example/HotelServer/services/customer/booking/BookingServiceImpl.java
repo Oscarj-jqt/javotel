@@ -2,6 +2,7 @@ package com.example.HotelServer.services.customer.booking;
 
 
 import com.example.HotelServer.dto.ReservationDto;
+import com.example.HotelServer.dto.ReservationResponseDto;
 import com.example.HotelServer.entity.Reservation;
 import com.example.HotelServer.entity.Room;
 import com.example.HotelServer.entity.User;
@@ -10,11 +11,17 @@ import com.example.HotelServer.repository.ReservationRepository;
 import com.example.HotelServer.repository.RoomRepository;
 import com.example.HotelServer.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static com.example.HotelServer.services.admin.reservation.ReservationServiceImpl.SEARCH_RESULT_PER_PAGE;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +32,8 @@ public class BookingServiceImpl implements BookingService{
     private final RoomRepository roomRepository;
     
     private ReservationRepository reservationRepository = null;
+
+    public static final int SEARCH_RESULT_PER_PAGE = 4;
 
     public BookingServiceImpl(UserRepository userRepository, RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
@@ -55,5 +64,20 @@ public class BookingServiceImpl implements BookingService{
         return false;
 
     }
-    
+
+    public ReservationResponseDto getAllReservationByUserId(Long userId, int pageNumber){
+        Pageable pageable = PageRequest.of(pageNumber, SEARCH_RESULT_PER_PAGE);
+
+        Page<Reservation> reservationPage = reservationRepository.findAllByUserId(pageable, userId);
+
+        ReservationResponseDto reservationResponseDto = new ReservationResponseDto();
+
+        reservationResponseDto.setReservationDtoList(reservationPage.stream().map(Reservation::getReservationDto)
+                .collect(Collectors.toList()));
+
+        reservationResponseDto.setPageNumber(reservationPage.getPageable().getPageNumber());
+        reservationResponseDto.setTotalPages(reservationPage.getTotalPages());
+
+        return reservationResponseDto;
+    }
 }

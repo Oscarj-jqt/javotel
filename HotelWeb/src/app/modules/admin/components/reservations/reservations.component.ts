@@ -34,4 +34,22 @@ export class ReservationsComponent {
     this.getReservations();
   }
 
+  changeReservationStatus(bookingId:number, status:string){
+    this.adminService.changeReservationStatus(bookingId, status).subscribe(res=>{
+      this.message
+      .success(
+        `Reservation status updated successfully`,
+        { nzDuration: 5000 }
+      );
+      
+      this.getReservations();
+    }, error=>{
+      this.message
+      .error(
+        `${error.error}`,
+        { nzDuration: 5000 }
+      )
+    })
+  }
+
 }

@@ -36,8 +36,10 @@ public class BookingController {
     public ResponseEntity<?> getAllBookingsByUserId(@PathVariable Long userId, @PathVariable int pageNumber){
         try{
             return ResponseEntity.ok(bookingService.getAllReservationByUserId(userId, pageNumber));
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong.");
+        } catch (Exception e) {
+            e.printStackTrace(); // Affiche la pile d'erreurs dans les logs
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Something went wrong: " + e.getMessage());
         }
     }
 }

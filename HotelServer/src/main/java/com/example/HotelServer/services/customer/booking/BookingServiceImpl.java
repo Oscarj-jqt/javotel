@@ -31,11 +31,11 @@ public class BookingServiceImpl implements BookingService{
 
     private final RoomRepository roomRepository;
     
-    private ReservationRepository reservationRepository = null;
+    private final ReservationRepository reservationRepository;
 
     public static final int SEARCH_RESULT_PER_PAGE = 4;
 
-    public BookingServiceImpl(UserRepository userRepository, RoomRepository roomRepository) {
+    public BookingServiceImpl(ReservationRepository reservationRepository, UserRepository userRepository, RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
         this.userRepository = userRepository;
         this.reservationRepository = reservationRepository;

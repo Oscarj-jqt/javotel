@@ -12,6 +12,9 @@ export class ViewBookingsComponent {
 
   currentPage: any = 1;
 
+  total: any;
+  bookings: any;
+
   constructor(private customerService: CustomerService,
     private message: NzMessageService
   ){
@@ -22,6 +25,9 @@ export class ViewBookingsComponent {
   getBookings(){
     this.customerService.getMyBookings(this.currentPage-1).subscribe(res=>{
       console.log(res);
+
+      this.bookings = res.reservationDtoList;
+      this.total = res.totalPages * 5;
     }, error=>{
       this.message
         .error(
@@ -29,5 +35,10 @@ export class ViewBookingsComponent {
           { nzDuration: 5000 }
         )
     })
+  }
+
+  pageIndexChange(value:any){
+    this.currentPage = value;
+    this.getBookings();
   }
 }

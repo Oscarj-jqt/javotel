@@ -14,3 +14,33 @@ Creating Login API with JWT in Spring Boot
 1h08
 Creating User Details Service & Testing Login API
 Creating Login Page & Calling Login API
+Creating Role Based Side Bars & Logout Function
+Creating Modules for Admin & Customer
+Creating Jwt Auth Fiter in Spring Boot
+Creating Room Entity & Restricting APIs By Role
+Creating Post Room API Call in Spring Boot
+Creating Post Room Page with Reactive Form
+Creating Service & Calling Post Room API
+Creating Get Rooms API Call with Pagination
+Calling Get All Rooms API Call in Angular
+Implementing Pagination & Showing Rooms Data
+Creating API Call to Get Single Rooom
+Creating Update Room Page With Reactive Form
+Creating Update Room API in Spring Boot
+Calling Get Room API & Patching info in Form 
+Calling Update Room Details API in Angular
+Creating Delete Room API in Spring Boot
+Calling Delete Room API with Confirm Model
+Creating Get Available Rooms API Call for Customers
+Calling Get Available Rooms API in Angular
+Creating Reservation Entity in Spring Boot
+Create Reservation API with DTO & Service
+Calling Book Room API with Dates Model Box
+Create Get Room Bookings API with Pagination
+Completing & Testing Get Room Bookings API
+Showing Bookings to Admin with pagination
+Creating change booking status API for Admin  
+Calling Change Booking Status API in Angular 
+Creating Get Room Bookings API by User in Spring Boot
+Calling Get My Room Bookings API in Angular
+Showing Room Bookings Data with Pagination

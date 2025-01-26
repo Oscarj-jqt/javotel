@@ -8,7 +8,6 @@ Ce projet est une application permettant de gérer les réservations d'hôtel, i
 * **Spring Boot** est utilisé pour développer une API REST, gérer les services backend, et organiser l'application selon les principes MVC.
 * **MySQL** est utilisé pour stocker toutes les données liées aux utilisateurs, chambres, et réservations.
 * **JPA/Hibernate** est employé pour interagir avec la base de données et simplifier les opérations CRUD.
-* **Pagination** est implémentée pour permettre une navigation fluide des résultats des réservations.
 
 ### Frontend - Angular
 * **Angular** est utilisé pour développer une interface utilisateur moderne et réactive.
